@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blood Pressure Check</title>
+    <svg class="svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#4481eb" fill-opacity="1" d="M0,224L60,197.3C120,171,240,117,360,85.3C480,53,600,43,720,64C840,85,960,139,1080,160C1200,181,1320,171,1380,165.3L1440,160L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z"></path></svg>
+</head>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            text-align: center;
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #333;
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+        input[type="text"] {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        input[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
+    
+   
+<body>
+    <div class="container">
+        <h1>Check Your Blood Pressure</h1>
+        <form id="bpForm">
+            <label for="systolic">Systolic Pressure (mmHg):</label>
+            <input type="text" id="systolic" name="systolic" placeholder="Enter systolic pressure">
+            <label for="diastolic">Diastolic Pressure (mmHg):</label>
+            <input type="text" id="diastolic" name="diastolic" placeholder="Enter diastolic pressure">
+            <input type="submit" value="Check Blood Pressure">
+        </form>
+        <div id="result"><p>Your blood pressure is within normal range. Keep up the good work!</p></div>
+    </div>
+
+    <script>
+        document.getElementById('bpForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            var systolic = parseInt(document.getElementById('systolic').value);
+            var diastolic = parseInt(document.getElementById('diastolic').value);
+            var result = document.getElementById('result');
+
+            if (isNaN(systolic) || isNaN(diastolic)) {
+                result.innerHTML = '<p>Please enter valid numbers for both systolic and diastolic pressure.</p>';
+            } else {
+                if (systolic >= 120 && systolic <= 139 && diastolic >= 80 && diastolic <= 89) {
+                    result.innerHTML = '<p>Your blood pressure is prehypertensive. Please consult with a healthcare professional.</p>';
+                } else if (systolic >= 140 || diastolic >= 90) {
+                    result.innerHTML = '<p>Your blood pressure is high. Please consult with a healthcare professional immediately.</p>';
+                } else {
+                    result.innerHTML = '<p>Your blood pressure is within normal range. Keep up the good work!</p>';
+                }
+            }
+        });
+    </script>
+
+    <footer class="white-section" id="footer">
+        <div class="container-fluid">
+          <i class="social-icon fab fa-facebook-f"></i>
+          <i class="social-icon fab fa-twitter"></i>
+          <i class="social-icon fab fa-instagram"></i>
+          <i class="social-icon fas fa-envelope"></i>
+          <p>© Copyright 2024 HealthConnect</p>
+        </div>
+      </footer>
+
+
+</body>
+</html>
